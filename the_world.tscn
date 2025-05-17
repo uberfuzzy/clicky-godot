@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://tfgbb0y67pnh"]
+[gd_scene load_steps=4 format=3 uid="uid://tfgbb0y67pnh"]
 
 [ext_resource type="Script" uid="uid://bcyuv7xrqkjjl" path="res://world.gd" id="1_j184h"]
+[ext_resource type="Script" uid="uid://bvwdra6omnho6" path="res://cont_clickers.gd" id="2_b2j4v"]
+[ext_resource type="Script" uid="uid://cgj34dpoq7mxk" path="res://cont_shop.gd" id="2_gmibx"]
 
 [node name="the_world" type="Node2D"]
 script = ExtResource("1_j184h")
@@ -38,10 +40,12 @@ text = "--"
 metadata/_edit_use_anchors_ = true
 
 [node name="cont_shop" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 offset_left = 180.0
 offset_top = 86.0
 offset_right = 383.0
 offset_bottom = 187.0
+script = ExtResource("2_gmibx")
 
 [node name="Label" type="Label" parent="cont_shop"]
 layout_mode = 2
@@ -78,11 +82,13 @@ metadata/cost = 50
 metadata/format = &"unlock +10: $%d"
 
 [node name="cont_clickers" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 offset_left = 6.0
 offset_top = 61.0
 offset_right = 126.0
 offset_bottom = 183.0
 theme_override_constants/separation = 7
+script = ExtResource("2_b2j4v")
 
 [node name="b_go_up1" type="Button" parent="cont_clickers"]
 layout_mode = 2
@@ -110,14 +116,14 @@ metadata/_edit_use_anchors_ = true
 [connection signal="changed" from="the_bar" to="." method="_on_the_bar_changed"]
 [connection signal="value_changed" from="the_bar" to="." method="_on_the_bar_value_changed"]
 [connection signal="pressed" from="b_reset" to="." method="_on_button_reset_pressed"]
-[connection signal="pressed" from="cont_shop/b_buy_wallet" to="." method="_on_b_buy_walletA_pressed"]
-[connection signal="ready" from="cont_shop/b_buy_wallet" to="." method="_on_b_buy_wallet_ready"]
-[connection signal="pressed" from="cont_shop/b_buy_wallet2" to="." method="_on_b_buy_walletB_pressed"]
-[connection signal="ready" from="cont_shop/b_buy_wallet2" to="." method="_on_b_buy_wallet2_ready"]
-[connection signal="pressed" from="cont_shop/b_buy5" to="." method="_on_button_pressed_buy5"]
-[connection signal="ready" from="cont_shop/b_buy5" to="." method="_on_b_buy_5_ready"]
-[connection signal="pressed" from="cont_shop/b_buy10" to="." method="_on_button_pressed_buy10"]
-[connection signal="ready" from="cont_shop/b_buy10" to="." method="_on_b_buy_10_ready"]
-[connection signal="pressed" from="cont_clickers/b_go_up1" to="." method="_on_button_up1_pressed"]
-[connection signal="pressed" from="cont_clickers/b_go_up5" to="." method="_on_button_up5_pressed"]
-[connection signal="pressed" from="cont_clickers/b_go_up10" to="." method="_on_button_up10_pressed"]
+[connection signal="pressed" from="cont_shop/b_buy_wallet" to="cont_shop" method="_on_b_buy_walletA_pressed"]
+[connection signal="ready" from="cont_shop/b_buy_wallet" to="cont_shop" method="_on_b_buy_wallet_ready"]
+[connection signal="pressed" from="cont_shop/b_buy_wallet2" to="cont_shop" method="_on_b_buy_walletB_pressed"]
+[connection signal="ready" from="cont_shop/b_buy_wallet2" to="cont_shop" method="_on_b_buy_wallet2_ready"]
+[connection signal="pressed" from="cont_shop/b_buy5" to="cont_shop" method="_on_button_pressed_buy5"]
+[connection signal="ready" from="cont_shop/b_buy5" to="cont_shop" method="_on_b_buy_5_ready"]
+[connection signal="pressed" from="cont_shop/b_buy10" to="cont_shop" method="_on_button_pressed_buy10"]
+[connection signal="ready" from="cont_shop/b_buy10" to="cont_shop" method="_on_b_buy_10_ready"]
+[connection signal="pressed" from="cont_clickers/b_go_up1" to="cont_clickers" method="_on_button_up1_pressed"]
+[connection signal="pressed" from="cont_clickers/b_go_up5" to="cont_clickers" method="_on_button_up5_pressed"]
+[connection signal="pressed" from="cont_clickers/b_go_up10" to="cont_clickers" method="_on_button_up10_pressed"]
